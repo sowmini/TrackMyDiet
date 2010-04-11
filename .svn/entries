@@ -1,0 +1,129 @@
+10
+
+dir
+8
+https://cosc617trackmydiet.googlecode.com/svn/trunk
+https://cosc617trackmydiet.googlecode.com/svn
+
+
+
+2010-04-11T05:36:01.427622Z
+8
+sowmini2087
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+e21fd537-3891-dd44-b758-95eb97952110
+
+test
+dir
+
+app
+dir
+
+tmp
+dir
+
+log
+dir
+
+Rakefile
+file
+
+
+
+
+2010-04-02T06:06:22.157289Z
+17f2f134da4cd31ea095d5868ca89e86
+2010-04-02T06:05:01.274669Z
+2
+sowmini2087
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+307
+
+script
+dir
+
+config
+dir
+
+db
+dir
+
+doc
+dir
+
+lib
+dir
+
+vendor
+dir
+
+README
+file
+
+
+
+
+2010-04-02T06:06:22.165290Z
+a58e68a7599c976f071d5b9c6fa67fb3
+2010-04-02T06:05:01.274669Z
+2
+sowmini2087
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10011
+
+public
+dir
+

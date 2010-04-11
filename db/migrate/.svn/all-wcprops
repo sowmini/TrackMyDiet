@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/8/trunk/db/migrate
+END
+20100401185428_add_user_timestamps.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2/trunk/db/migrate/20100401185428_add_user_timestamps.rb
+END
+20100405004559_add_emailto_user.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/8/trunk/db/migrate/20100405004559_add_emailto_user.rb
+END
+20100401181947_create_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/3/trunk/db/migrate/20100401181947_create_users.rb
+END
+20100406164631_create_sessions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/8/trunk/db/migrate/20100406164631_create_sessions.rb
+END

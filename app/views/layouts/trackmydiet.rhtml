@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+	<head>
+		<title><%= @title %></title>
+		<%= stylesheet_link_tag "styles" %>
+		<%= javascript_include_tag :defaults %>
+	</head>
+	<body>
+		<div id="whole_page">
+			<div id="header">TrackMydiet</div>
+				<div id="nav">
+					<span style="float:right">
+						<% if logged_in? -%>
+							<%= nav_link "Home", "user", "index" %> |
+							<%= nav_link "Logout", "user", "logout" %> 
+						<% else -%>
+							<%= nav_link "Register", "user", "register" %> |
+							<%= nav_link "Login", "user", "login" %> 
+						<% end -%>
+					</span>
+					
+					<%= nav_link "Home", "trackmydiet", "index" %> |
+					<%= nav_link "About Us", "trackmydiet", "about" %> |
+					<%= nav_link "Nutrition", "trackmydiet", "nutrition" %> |
+					<%= nav_link "Exercise", "trackmydiet", "exercise" %> |
+					<%= nav_link "Communities", "trackmydiet", "communities" %> 
+				</div>
+			
+			<div id="content">
+				<% if flash[:notice] -%>
+					<div id="notice">
+						<%= flash[:notice] %>
+					</div>
+				<% end -%>
+			<%= yield %>	
+			</div>
+		</div>
+			<% if ENV["RAILS_ENV"] == "development" %> 
+				<div id="debug">
+					<a href="#" onclick="Element.toggle('params_debug_info');return false">params</a> |
+					<a href="#" onclick="Element.toggle('session_debug_info');return false">session</a> |
+					<a href="#" onclick="Element.toggle('env_debug_info');return false">env</a> |
+					<a href="#" onclick="Element.toggle('request_debug_info');return false">request</a> 
+					<fieldset id="params_debug_info" class="debug_info" style="display: none">
+						<legend>params</legend>
+						<%= debug(params) %>
+					</fieldset>
+					
+					<fieldset id="session_debug_info" class="debug_info" style="display:none">
+						<legend>session</legend>
+						<%= debug(session) %>
+					</fieldset>
+					
+					<fieldset id="env_debug_info" class="debug_info" style="display:none">
+						<legend>env</legend>
+						<%= debug(request.env) %>
+					</fieldset>
+					
+					<fieldset id="request_debug_info" class="debug_info" style="display:none">
+						<legend>request</legend>
+						<%= debug(request) %>
+					</fieldset>
+					
+				</div>
+			<% end %> 
+		</div>
+		
+	</body>
+</html>
+

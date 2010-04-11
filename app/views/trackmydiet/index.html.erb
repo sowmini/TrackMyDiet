@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+	<head>
+		<title>Track My Diet</title>
+		<%= stylesheet_link_tag "styles" %>
+	</head>
+	
+	<body>
+		<h1>Welcome to TrackMydiet</h1>
+		<p>
+			Lorem ipsum partem voluptatum nec te, nec posidonium efficiendi 
+			philosophia ex. An quando malorum invidunt eos. Eum quando labore 
+			erroribus ei, has ea quas aliquyam adipiscing, percipit principes no sed. 
+			His ad augue dicta tincidunt, ut duo graece viderer scripserit, te vel 
+			nisl epicuri voluptatum. Cu delectus sapientem cum, eu quando graece vis, 
+			an eruditi sadipscing nec.
+			<br/><br/>
+			Vis diceret voluptaria voluptatibus ei, ea discere deseruisse mel. 
+			Pro eu aeterno patrioque honestatis, has quod persius persecuti cu. 
+			Laudem aperiam vulputate vix et, ad sit vide animal docendi, atomorum 
+			torquatos intellegat qui at. Soleat possit laboramus ex nam, quo dico 
+			dolor instructior ut, vivendo recusabo vix ne. Cu autem deleniti rationibus 
+			est, quis munere verear te cum.
+			<br/><br/>
+			
+			<h4>Register for FREE! </h4>
+			<%= button_to "Register", :controller => "user", :action => "register", :class => "submit" -%>
+			
+			Existing user?
+			<%= button_to "Login", :controller => "user", :action => "login", :class => 'submit' -%>
+		</p>
+	</body>
+</html>
+
+
+

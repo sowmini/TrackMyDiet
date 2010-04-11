@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+	<head>
+		<title>Track My Diet</title>
+		<%= stylesheet_link_tag "styles" %>
+	</head>
+	
+	<body>
+
+		<% form_for :user do |form| %> 
+			
+		  <h2>Register for Your FREE TrackMyDiet Account</h2>	
+			<br/>
+		 <fieldset> 
+			
+			<legend>Enter Your Details</legend> 
+			
+			<%= error_messages_for "user" %>
+			<br/>	
+			
+			<div class="form_row"> 
+			  <label for="email">Email Address:</label> 
+			  <%= form.text_field 	:email,
+									:size => User::EMAIL_SIZE, 
+									:maxlength => User::EMAIL_MAX_LENGTH	    %> 
+			</div> 
+			
+			<div class="form_row"> 
+			  <label for="firstname">Firstname:</label> 
+			  <%= form.text_field 	:firstname,
+									:size => User::SCREEN_NAME_SIZE, 
+									:maxlength => User::SCREEN_NAME_MAX_LENGTH 	%> 
+			</div> 
+			
+			<div class="form_row"> 
+			  <label for="lastname">Last name:</label> 
+			  <%= form.text_field 	:lastname,
+									:size => User::SCREEN_NAME_SIZE, 
+									:maxlength => User::SCREEN_NAME_MAX_LENGTH	%> 
+			</div> 
+			
+			<div class="form_row"> 
+			  <label for="username">Username:</label> 
+			  <%= form.text_field 	:username,
+									:size => User::SCREEN_NAME_SIZE, 
+									:maxlength => User::SCREEN_NAME_MAX_LENGTH	%> 
+			</div> 
+
+			<div class="form_row"> 
+			  <label for="password">Password:</label> 
+			  <%= form.password_field 	:password, 
+										:size => User::PASSWORD_SIZE, 
+										:maxlength => User::PASSWORD_MAX_LENGTH	%> 
+			</div> 
+
+			<div class="form_row"> 
+			  <%= submit_tag "Register!", :class => "submit" %> 
+			</div> 
+			
+		  </fieldset> 
+		 <% end %>
+	</body>
+</html>
