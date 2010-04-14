@@ -1,12 +1,16 @@
+
 class UserController < ApplicationController
   
   include TrackmydietHelper
   
   layout 'trackmydiet'
-  before_filter :protect, :only => :index
+  
+  # To allow only a logged-in user to edit
+  before_filter :protect, :only => [:index, :edit]
   
   def index
 	@title = "Track My diet"
+	@user = User.find(session[:user_id])
   end
 
   def register
@@ -31,23 +35,26 @@ class UserController < ApplicationController
 	@title = "Login to TrackMyDiet"
 	
 	if request.get?
-		@user = User.new(:remember_me => cookies[:remember_me] || "0")
-	elseif param_posted?(:user)
+		@user = User.new(:remember_me => remember_me_string)
+	elsif param_posted?(:user)
 		@user = User.new(params[:user])
 		user = User.find_by_username_and_password(@user.username, @user.password)
 		
 		if user
+			# Check if the user is logged in
 			user.login!(session)
 			
-			#Remember user credentials
-			if @user.remember_me == "1"
-				#Checkbox selected, so set the remember_me cookie
-				cookies[:remember_me] = { :value   => "1", 
-										  :expires => 10.years.from_now}
+			# Remember user credentials
+			if @user.remember_me?
+				# Checkbox selected, so set the remember_me cookie
+				# Refers the remember action in user model
+				user.remember!(cookies)
+			else
+				user.forget!(cookies)
 			end
 			
 			flash[:notice] = "User #{user.username} logged in!"
-			# Performs necessary redirections after validating the redirect_url
+			# Performs necessary redirections after validating the redirect_url	
 			redirect_to_forwarding_url
 			
 		else
@@ -60,9 +67,20 @@ class UserController < ApplicationController
   
   def logout
 	# Refer user model for the method 'logout!' functionality 
-	User.logout!(session)
+	User.logout!(session, cookies)
 	flash[:notice] = "Logged out!"
 	redirect_to :action => "index", :controller => "trackmydiet"
+  end
+  
+  def edit
+	@title = "Edit Profile info"
+	@user = User.find(session[:user_id])
+	if param_posted?(:user)
+		if @user.update_attributes(params[:user])
+			flash[:notice] = "Email updated"
+			redirect_to :action => "index"
+		end
+	end
   end
   
   private
@@ -89,5 +107,10 @@ class UserController < ApplicationController
 		else
 			redirect_to	:action => "index"
 		end
-	end
+  end
+  
+  def remember_me_string
+	cookies[:remember_me] || "0"
+  end
+  
 end

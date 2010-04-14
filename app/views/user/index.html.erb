@@ -1,2 +1,13 @@
-<h1>User Registered</h1>
-<p id="registerSuccess">User created successfully</p>
+<h2>Your profile information</h2>
+
+<ul>
+	<li>Username: <%= @user.username %></li>
+	<li>Email: <%= @user.email %></li>
+	<li>Password: *********</li>
+</ul>
+
+<!--
+<ul>
+	<li><%= link_to "Edit my profile", :action => "edit", :controller => "user" %></li>
+</ul>
+-->

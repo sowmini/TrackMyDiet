@@ -1,3 +1,4 @@
+require 'digest/sha1'
 class User < ActiveRecord::Base
 	
 	attr_accessor :remember_me
@@ -43,12 +44,42 @@ class User < ActiveRecord::Base
 	end
 	
 	# Log out a user
-	def self.logout!(session)
+	def self.logout!(session, cookies)
 		session[:user_id] = nil
+		cookies.delete(:authorization_token)
 	end
 	
 	# Clear Password
 	def clear_password!
 		self.password = nil
 	end
+	
+	# Remember user for future login
+	# remember! raises an exception in case of an error
+	def remember!(cookies)
+		cookie_expiration = 10.years.from_now
+		cookies[:remember_me] = { :value => "1",
+								  :expires => cookie_expiration}
+		self.authorization_token = secure_unique_identifier 
+		save!
+		cookies[:authorization_token] = {:value   => authorization_token,
+										 :expires => cookie_expiration }
+	end
+	
+	def forget!(cookies)
+		cookies.delete(:remember_me)
+		cookies.delete(:authorization_token)
+	end
+	
+	def remember_me?
+		remember_me == "1"
+	end
+	
+	private
+	def secure_unique_identifier
+		Digest::SHA1::hexdigest("#{username}:#{password}")
+	end
+	
 end
+
+
